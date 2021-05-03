@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\LandingPage;
 use App\Http\Livewire\Login;
+use App\Http\Livewire\Register;
+use App\Http\Livewire\Profile;
+use App\Http\Livewire\Setting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', LandingPage::class)->name('landing')->middleware('guest');
-Route::get('/home', Dashboard::class)->name('home')->middleware('auth');
+Route::get('/', Dashboard::class)->name('home')->middleware('auth');
 Route::get('/login', Login::class)->name('login')->middleware('guest');
+Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', [Controller::class,'logout'])->name('logout')->middleware('auth');
+Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
+Route::get('/setting', Setting::class)->name('setting')->middleware('auth');

@@ -2,4 +2,33 @@
 
 @tailwind components;
 
+
+.nav-link {
+    @apply flex;
+    @apply p-3;
+    @apply text-gray-600;
+    @apply hover:text-black;
+    @apply hover:bg-gray-100;
+    @apply font-medium;
+    @apply cursor-pointer;
+    @apply select-none;
+    @apply pl-5;
+    @apply justify-center;
+    @apply lg:justify-start;
+}
+.nav-link-active {
+    @apply flex;
+    @apply p-3;
+    @apply text-gray-900;
+    @apply bg-gray-300;
+    @apply hover:text-white;
+    @apply hover:bg-gray-600;
+    @apply font-medium;
+    @apply cursor-pointer;
+    @apply select-none;
+    @apply pl-5;
+    @apply justify-center;
+    @apply lg:justify-start;
+}
+
 @tailwind utilities;

@@ -5,6 +5,7 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use App\Http\Livewire\Profile;
+use App\Http\Livewire\ScheduleJob;
 use App\Http\Livewire\Setting;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,4 @@ Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', [Controller::class,'logout'])->name('logout')->middleware('auth');
 Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
 Route::get('/setting', Setting::class)->name('setting')->middleware('auth');
+Route::get('/schedule/job', ScheduleJob::class)->name('scheduleJob')->middleware('auth','checkIfCustomer');

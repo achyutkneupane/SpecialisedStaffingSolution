@@ -1,7 +1,7 @@
 <div class="flex h-screen items-center justify-center">
     <div class="loading" wire:loading wire:target="changePassword"></div>
     <div class="bg-white shadow w-7/12 rounded-xl p-5 flex flex-col items-center">
-        <div class="w-full text-3xl m-3 text-center">
+        <div class="w-full text-3xl m-3 text-center text-blue-800">
             Change Password
         </div>
         <div class="flex flex-col w-7/12">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="text-center mt-4">
                     <button
-                        class="w-3/12 py-2 font-semibold text-white transition duration-500 ease-in-out transform bg-black rounded-lg hover:bg-gray-800 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Change</button>
+                        class="w-3/12 py-2 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-800 rounded-lg hover:bg-indigo-800 hover:text-blue-100 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Change</button>
                 </div>
             </form>
         </div>

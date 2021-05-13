@@ -10,14 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ScheduleJob extends Component
 {
-    public $jobDate,$jobTitle,$jobs;
+    public $jobDate,$jobTitle,$jobs,$hours,$minutes,$ampm;
     public $rules = [
         'jobTitle' => 'required',
-        'jobDate' => 'required'
+        'jobDate' => 'required',
+        'hours' => 'required',
+        'minutes' => 'required',
+        'ampm' => 'required',
     ];
     public function mount()
     {
-        $this->jobs = json_encode(Appointment::with('user')->orderBy('job_date','ASC')->where('user_id',auth()->id())->get());
+        $this->hours = '';
+        $this->minutes = '';
+        $this->ampm = '';
+        $this->jobs = json_encode(Appointment::with('user')->orderBy('job_dateTime','ASC')->where('user_id',auth()->id())->get());
     }
     public function updated($propertyName)
     {
@@ -26,14 +32,18 @@ class ScheduleJob extends Component
     public function store()
     {
         $this->validate();
+        $dateTime = $this->jobDate.' '.$this->hours.':'.$this->minutes.' '.$this->ampm;
         Appointment::create([
             'title' => $this->jobTitle,
-            'job_date' => Carbon::parse($this->jobDate),
+            'job_dateTime' => Carbon::parse($dateTime),
             'user_id' => auth()->id()
         ]);
         session()->flash('JobSaved', 'Job has been appointed successfully.');
-        $this->reset('jobTitle','jobDate','jobs');
-        $this->jobs = json_encode(Appointment::with('user')->orderBy('job_date','ASC')->where('user_id',auth()->id())->get());
+        $this->reset('jobTitle','jobDate','jobs','hours','minutes','ampm');
+        $this->hours = '';
+        $this->minutes = '';
+        $this->ampm = '';
+        $this->jobs = json_encode(Appointment::with('user')->orderBy('job_dateTime','ASC')->where('user_id',auth()->id())->get());
     }
     public function render()
     {

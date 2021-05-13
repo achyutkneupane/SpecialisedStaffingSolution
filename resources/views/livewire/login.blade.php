@@ -5,11 +5,11 @@
             <div class="w-full h-100">
                 <a class="flex items-center w-full mb-4 font-medium text-gray-900 title-font md:mb-0">
                 <h2
-                    class="text-lg font-bold tracking-tighter text-black uppercase">
+                    class="text-lg font-bold tracking-tighter text-blue-900 uppercase">
                     {{ config('app.name', 'Laravel') }}
                 </h2>
                 </a>
-                <h1 class="mt-12 text-2xl font-semibold text-black tracking-ringtighter sm:text-3xl title-font">Log in to your
+                <h1 class="mt-12 text-2xl font-semibold text-blue-700 tracking-ringtighter sm:text-3xl title-font">Log in to your
                     account</h1>
                 <form class="mt-6" wire:submit.prevent="authenticate">
                     <div>
@@ -35,7 +35,7 @@
                             class="text-sm font-semibold leading-relaxed text-gray-700 hover:text-black focus:text-blue-700">Forgot
                             Password?</a>
                     </div> --}}
-                    <button type="submit" class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-black rounded-lg hover:bg-gray-800 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Log In</button>
+                    <button type="submit" class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-800 rounded-lg hover:bg-indigo-800 hover:text-blue-100 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Log In</button>
                 </form>
                 <p class="mt-8 text-center">Need an account? <a href="{{ route('register') }}"
                         class="font-semibold text-blue-500 hover:text-blue-700">Sign Up</a></p>

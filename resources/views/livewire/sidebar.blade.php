@@ -1,6 +1,9 @@
 <div>
     <div class="bg-white fixed h-full lg:w-64 w-20 shadow ease-in-out duration-700 overflow-y-auto">
-        <div class="text-3xl text-gray-800 bg-white p-3 text-center uppercase sticky top-0">
+        <div class="text-3xl text-blue-800 bg-white p-3 text-center uppercase sticky top-0">
+          <div class="w-full flex justify-center">
+            <img src="{{ asset('statics/logo.png') }}" class="w-1/3">
+          </div>
             @php
                 $words = explode(" ", config('app.name', 'Laravel') );
                 $initials = null;
@@ -46,7 +49,7 @@
                   </span>
             </a>
 
-            <a class="nav-link lg:bg-gray-900 lg:text-white lg:hover:bg-gray-700 lg:hover:text-gray-200 lg:mx-10 lg:justify-center lg:rounded-xl lg:mt-4" href="{{ route('logout') }}">
+            <a class="nav-link lg:bg-blue-900 lg:text-white lg:hover:bg-blue-700 lg:hover:text-white lg:mx-10 lg:justify-center lg:rounded-xl lg:mt-4" href="{{ route('logout') }}">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>

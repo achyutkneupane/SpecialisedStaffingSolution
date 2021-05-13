@@ -33,7 +33,7 @@
         <div class="sidebar">
             @include('livewire.sidebar')
         </div>
-        <div class="w-full bg-gray-100 ml-20 lg:ml-64 ease-in-out duration-700">
+        <div class="w-full bg-blue-100 ml-20 lg:ml-64 ease-in-out duration-700">
             {{ $slot }}
         </div>
     </div>

@@ -6,9 +6,9 @@
 .nav-link {
     @apply flex;
     @apply p-3;
-    @apply text-gray-600;
+    @apply text-blue-600;
     @apply hover:text-black;
-    @apply hover:bg-gray-100;
+    @apply hover:bg-blue-100;
     @apply font-medium;
     @apply cursor-pointer;
     @apply select-none;
@@ -19,10 +19,10 @@
 .nav-link-active {
     @apply flex;
     @apply p-3;
-    @apply text-gray-900;
-    @apply bg-gray-300;
+    @apply text-blue-900;
+    @apply bg-blue-300;
     @apply hover:text-white;
-    @apply hover:bg-gray-600;
+    @apply hover:bg-blue-600;
     @apply font-medium;
     @apply cursor-pointer;
     @apply select-none;

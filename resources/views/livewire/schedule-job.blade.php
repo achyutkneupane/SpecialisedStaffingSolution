@@ -79,26 +79,14 @@
                 @error('ampm')
                     <span class="text-red-700 text-left">{{ $message }}</span>
                 @enderror
+                <div class="mt-4">
+                    <textarea wire:model.lazy="jobDescription" placeholder="Enter Job Description" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"></textarea>
+                </div>
+                @error('jobTitle')
+                    <span class="text-red-700 text-left">{{ $message }}</span>
+                @enderror
                 <button type="submit" wire:click="store" class="block w-3/12 px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-800 rounded-lg hover:bg-indigo-800 hover:text-blue-100 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Store</button>
             </div>
         </div>
     </div>
-    @foreach(json_decode($jobs) as $job)
-    <div class="bg-white shadow w-9/12 rounded-lg p-5 mt-2 mb-3">
-        <div class="flex justify-around">
-            <div class="flex flex-col text-center">
-                <div class="text-xl font-extrabold text-blue-900">Title: </div>
-                <div class="text-xl">{{ $job->title }}</div>
-            </div>
-            <div class="flex flex-col text-center">
-                <div class="text-xl font-extrabold text-blue-900">Created By: </div>
-                <div class="text-xl">{{ $job->user->name }}</div>
-            </div>
-            <div class="flex flex-col text-center">
-                <div class="text-xl font-extrabold text-blue-900">Date of Appointment: </div>
-                <div class="text-xl">{{ $job->job_dateTime }}</div>
-            </div>
-        </div>
-    </div>
-    @endforeach
 </div>

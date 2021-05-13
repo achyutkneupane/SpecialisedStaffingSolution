@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Livewire\AllJobs;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\LandingPage;
 use App\Http\Livewire\Login;
@@ -28,4 +29,5 @@ Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', [Controller::class,'logout'])->name('logout')->middleware('auth');
 Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
 Route::get('/setting', Setting::class)->name('setting')->middleware('auth');
-Route::get('/schedule/job', ScheduleJob::class)->name('scheduleJob')->middleware('auth','checkIfCustomer');
+Route::get('/jobs', AllJobs::class)->name('allJobs');
+Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middleware('auth','checkIfCustomer');

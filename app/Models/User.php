@@ -38,6 +38,10 @@ class User extends Authenticatable
     ];
     public function jobs()
     {
-        return $this->hasMany(Appointment::class);
+        return $this->hasMany(Appointment::class,'user_id');
+    }
+    public function works()
+    {
+        return $this->hasMany(Appointment::class,'worker_id');
     }
 }

@@ -11,12 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class ScheduleJob extends Component
 {
     public $jobDate,$jobTitle,$hours,$minutes,$ampm,$jobDescription;
+    // public $endJobDate,$endHours,$endMinutes,$endAmpm;
     public $rules = [
         'jobTitle' => 'required',
         'jobDate' => 'required',
         'hours' => 'required',
         'minutes' => 'required',
         'ampm' => 'required',
+        // 'endJobDate' => 'required',
+        // 'endHours' => 'required',
+        // 'endMinutes' => 'required',
+        // 'endAmpm' => 'required',
         'jobDescription' => 'required'
     ];
     public function mount()
@@ -24,6 +29,9 @@ class ScheduleJob extends Component
         $this->hours = '';
         $this->minutes = '';
         $this->ampm = '';
+        // $this->endHours = '';
+        // $this->endMinutes = '';
+        // $this->endAmpm = '';
     }
     public function updated($propertyName)
     {
@@ -32,18 +40,19 @@ class ScheduleJob extends Component
     public function store()
     {
         $this->validate();
-        $dateTime = $this->jobDate.' '.$this->hours.':'.$this->minutes.' '.$this->ampm;
+        $startDateTime = $this->jobDate.' '.$this->hours.':'.$this->minutes.' '.$this->ampm;
+        // $endDateTime = $this->endJobDate.' '.$this->endHours.':'.$this->endMinutes.' '.$this->endAmpm;
         Appointment::create([
             'title' => $this->jobTitle,
-            'job_dateTime' => Carbon::parse($dateTime),
+            'job_startDateTime' => Carbon::parse($startDateTime),
+            // 'job_endDateTime' => Carbon::parse($endDateTime),
             'user_id' => auth()->id(),
             'job_description' => $this->jobDescription,
         ]);
         session()->flash('JobSaved', 'Job has been appointed successfully.');
         $this->reset('jobTitle','jobDate','hours','minutes','ampm','jobDescription');
-        $this->hours = '';
-        $this->minutes = '';
-        $this->ampm = '';
+        // $this->reset('endJobDate','endHours','endMinutes','endAmpm');
+        $this->mount();
     }
     public function render()
     {

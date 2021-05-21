@@ -8,6 +8,7 @@ class Sidebar extends Component
 {
     public function render()
     {
+        $this->notifications = auth()->user()->unreadNotifications;
         return view('livewire.sidebar');
     }
 }

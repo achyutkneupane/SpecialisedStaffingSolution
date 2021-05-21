@@ -11,7 +11,7 @@ class AllJobs extends Component
     use WithPagination;
     public function render()
     {
-        $jobs = Appointment::orderBy('job_dateTime','ASC')->paginate(4);
+        $jobs = Appointment::with('user','worker')->associated()->orderBy('job_startDateTime','ASC')->paginate(4);
         return view('livewire.all-jobs', compact('jobs'));
     }
 }

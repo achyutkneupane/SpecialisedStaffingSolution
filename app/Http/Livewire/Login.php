@@ -29,7 +29,9 @@ class Login extends Component
     {
         $this->validate();
         $user = User::where('email',$this->email)->first();
-        if(Hash::check($this->password, $user->password)) {
+        if($user->blocked)
+            $this->addError('email','You have blocked from entering the system.');
+        elseif(Hash::check($this->password, $user->password)) {
             Auth::loginUsingId($user->id);
             redirect()->route('home');
         }

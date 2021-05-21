@@ -29,7 +29,7 @@
     @guest
         {{ $slot }}
     @else
-    <div class="flex flex-row">
+    <div class="flex flex-row h-full">
         <div class="sidebar">
             @include('livewire.sidebar')
         </div>

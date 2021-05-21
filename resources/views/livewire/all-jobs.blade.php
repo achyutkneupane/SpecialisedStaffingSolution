@@ -2,7 +2,7 @@
     @if($jobs->count() > 0)
     <div class="w-full rounded-lg p-5 flex flex-wrap justify-center">
         @foreach($jobs as $job)
-        <div class="bg-white shadow w-9/12 rounded-lg p-5 mt-2 mb-3">
+        <a class="bg-white shadow w-9/12 rounded-lg p-5 mt-2 mb-3" href="{{ route('viewJob',$job->id) }}">
             <div class="flex justify-around">
                 <div class="flex flex-col text-center">
                     <div class="text-xl font-extrabold text-blue-900">Title: </div>
@@ -14,8 +14,14 @@
                 </div>
                 <div class="flex flex-col text-center">
                     <div class="text-xl font-extrabold text-blue-900">Date of Appointment: </div>
-                    <div class="text-xl">{{ $job->job_dateTime }}</div>
+                    <div class="text-xl">{{ $job->job_startDateTime }}</div>
                 </div>
+                @if(!empty($job->worker))
+                <div class="flex flex-col text-center">
+                    <div class="text-xl font-extrabold text-blue-900">Assigned To: </div>
+                    <div class="text-xl">{{ $job->worker->name }}</div>
+                </div>
+                @endif
             </div>
             <div class="py-2 w-full">
                 <div class="flex flex-col text-center">
@@ -23,7 +29,7 @@
                     <div class="text-xl">{{ $job->job_description }}</div>
                 </div>
             </div>
-        </div>
+        </a>
         @endforeach
     </div>
     <div class="flex justify-center">

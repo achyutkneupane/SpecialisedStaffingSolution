@@ -33,5 +33,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('isCustomer', function () {
             return auth()->user()->role == "customer";
         });
+        Blade::if('isCustomerOrManager', function () {
+            return auth()->user()->role == "customer" || auth()->user()->role == "manager";
+        });
     }
 }

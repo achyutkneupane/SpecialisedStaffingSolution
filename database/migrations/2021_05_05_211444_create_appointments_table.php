@@ -17,11 +17,15 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('job_description');
-            $table->dateTime('job_dateTime');
+            $table->dateTime('job_startDateTime');
+            // $table->dateTime('job_endDateTime');
+            $table->enum('status',array('closed','completed','active','proposed'))->default('proposed');
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('worker_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('worker_id')->references('id')->on('users');
         });
     }
 

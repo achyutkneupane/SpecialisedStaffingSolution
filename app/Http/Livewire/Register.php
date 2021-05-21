@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -29,12 +30,13 @@ class Register extends Component
     public function authenticate()
     {
         $this->validate();
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'role' => $this->role,
             'password' => Hash::make($this->password),
         ]);
+        event(new Registered($user));
         return redirect()->route('login');
     }
     public function render()

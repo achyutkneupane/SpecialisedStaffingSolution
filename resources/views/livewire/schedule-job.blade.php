@@ -40,7 +40,7 @@
                     <div class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                         <div class="flex">
                           <select wire:model="hours" class="mr-3 text-center bg-transparent outline-none appearance-none">
-                            <option value="" disabled selected>Hour</option>
+                            <option value="" disabled selected>HH</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -56,7 +56,7 @@
                           </select>
                           <span class="mr-3">:</span>
                           <select wire:model="minutes" class="mr-4 bg-transparent outline-none appearance-none">
-                            <option value="" disabled selected>Minute</option>
+                            <option value="" disabled selected>MM</option>
                             <option value="00">00</option>
                             <option value="15">15</option>
                             <option value="30">30</option>

@@ -11,6 +11,7 @@ class AllNotification extends Component
     public function markNotfAsRead($id)
     {
         $this->notifications->find($id)->markAsRead();
+        $this->emit('clearNotf');
     }
     public function render()
     {

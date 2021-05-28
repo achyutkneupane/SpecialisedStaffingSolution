@@ -31,9 +31,9 @@
     @else
     <div class="flex flex-row h-full">
         <div class="sidebar">
-            @include('livewire.sidebar')
+            @livewire('sidebar')
         </div>
-        <div class="w-full bg-blue-100 ml-20 lg:ml-64 ease-in-out duration-700">
+        <div class="w-full ml-20 duration-700 ease-in-out bg-blue-100 lg:ml-64">
             {{ $slot }}
         </div>
     </div>

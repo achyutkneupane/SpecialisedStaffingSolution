@@ -14,6 +14,7 @@ use App\Http\Livewire\ScheduleJob;
 use App\Http\Livewire\Setting;
 use App\Http\Livewire\ViewCustomer;
 use App\Http\Livewire\ViewEmployee;
+use App\Http\Livewire\ViewInvoice;
 use App\Http\Livewire\ViewJob;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,6 @@ Route::get('/setting', Setting::class)->name('setting')->middleware('auth');
 Route::get('/jobs', AllJobs::class)->name('allJobs')->middleware('auth');
 Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middleware('auth');
 Route::get('/job/{id}', ViewJob::class)->name('viewJob')->middleware('auth');
+Route::get('/job/{id}/invoice', ViewInvoice::class)->name('viewInvoice')->middleware('auth');
 Route::get('/employee/{id}', ViewEmployee::class)->name('viewEmployee')->middleware('auth','checkIfManager');
 Route::get('/customer/{id}', ViewCustomer::class)->name('viewCustomer')->middleware('auth','checkIfManager');

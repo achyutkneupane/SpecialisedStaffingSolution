@@ -25,6 +25,10 @@ class Appointment extends Model
     {
         return $this->hasOne(Review::class);
     }
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
     public function notes()
     {
         return $this->hasMany(JobNote::class);

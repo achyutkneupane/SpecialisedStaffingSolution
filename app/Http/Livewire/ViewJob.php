@@ -10,13 +10,15 @@ use Livewire\Component;
 
 class ViewJob extends Component
 {
-    public $job,$showInput,$employee,$jobId,$workers,$review,$rating,$note,$remark,$startJobDate,$endJobDate,$milestoneText;
+    public $job,$showInput,$employee,$jobId,$workers,$review,$rating,$note,$remark,$startJobDate,$endJobDate,$milestoneText,$statusChangerFlag,$jobStatus;
     public function mount($id)
     {
         $this->jobId = $id;
         $this->employee = '';
         $this->rating = '';
         $this->showInput = false;
+        $this->statusChangerFlag = false;
+        $this->jobStatus = '';
     }
     public function assign()
     {
@@ -47,6 +49,15 @@ class ViewJob extends Component
     {
         $this->job->update(['worker_id'=>NULL]);
         redirect()->route('allJobs');
+    }
+    public function managerCancel()
+    {
+        $this->job->update(['worker_id'=>NULL]);
+        $this->job->update(['status'=>'closed']);
+    }
+    public function changeStatus()
+    {
+        $this->statusChangerFlag = true;
     }
     public function submitNote()
     {
@@ -84,6 +95,13 @@ class ViewJob extends Component
         Milestone::find($id)->update([
             'completed_at' => now()
         ]);
+    }
+    public function updated($propertyName)
+    {
+        if($propertyName == 'jobStatus') {
+            $this->job->update(['status'=>$this->jobStatus]);
+            $this->statusChangerFlag = false;
+        }
     }
     public function render()
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Appointment;
+use App\Models\Invoice;
 use Livewire\Component;
 
 class ViewInvoice extends Component
@@ -11,6 +12,12 @@ class ViewInvoice extends Component
     public function mount($id)
     {
         $this->jobId = $id;
+    }
+    public function payInvoice()
+    {
+        Invoice::where('appointment_id',$this->jobId)->update([
+            'paid_at' => now(),
+        ]);
     }
     public function render()
     {

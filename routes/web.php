@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Livewire\AllCustomer;
 use App\Http\Livewire\AllEmployee;
+use App\Http\Livewire\AllInvoices;
 use App\Http\Livewire\AllJobs;
 use App\Http\Livewire\AllNotification;
 use App\Http\Livewire\Dashboard;
@@ -40,6 +41,7 @@ Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
 Route::get('/notification', AllNotification::class)->name('notification')->middleware('auth');
 Route::get('/setting', Setting::class)->name('setting')->middleware('auth');
 Route::get('/jobs', AllJobs::class)->name('allJobs')->middleware('auth');
+Route::get('/invoices', AllInvoices::class)->name('allInvoices')->middleware('auth');
 Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middleware('auth');
 Route::get('/job/{id}', ViewJob::class)->name('viewJob')->middleware('auth');
 Route::get('/job/{id}/invoice', ViewInvoice::class)->name('viewInvoice')->middleware('auth');

@@ -17,7 +17,7 @@
                         <select wire:model="employee" class="p-3 mr-5 border-2 rounded-lg">
                             <option value="" disabled>Select an employee</option>
                             @foreach($workers as $worker)
-                                <option value="{{ $worker->id }}">{{ $worker->name }}</option>
+                                <option value="{{ $worker->id }}" {{ $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) ? 'disabled' : '' }}>{{ $worker->name }}</option>
                             @endforeach
                         </select>
                         @endif
@@ -36,7 +36,7 @@
                         <select wire:model="employee" class="p-3 mr-5 border-2 rounded-lg">
                             <option value="" disabled>Select an employee</option>
                             @foreach($workers as $worker)
-                                <option value="{{ $worker->id }}" {{ ($job->worker->id == $worker->id || $worker->blocked == true || $worker->works->where('status','active')->count() != 0) ? 'disabled' : '' }}>{{ $worker->name }}</option>
+                                <option value="{{ $worker->id }}" {{ $job->worker->id == $worker->id || $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) ? 'disabled' : '' }}>{{ $worker->name }}</option>
                             @endforeach
                         </select>
                         @endif
@@ -79,6 +79,10 @@
                     <div class="w-9/12 text-xl">{{ $job->worker->name }}</div>
                 </div>
                 @endif
+                <div class="flex flex-row w-full">
+                    <div class="w-3/12 mr-5 text-xl font-extrabold text-blue-900">Job Location: </div>
+                    <div class="w-9/12 text-xl">{{ $job->location }}</div>
+                </div>
                 <div class="flex flex-row w-full">
                     <div class="w-3/12 mr-5 text-xl font-extrabold text-blue-900">Job Description: </div>
                     <div class="w-9/12 text-xl">{{ $job->job_description }}</div>

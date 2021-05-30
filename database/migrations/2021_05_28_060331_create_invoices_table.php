@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('appointment_id');
             $table->string('amount');
-            $table->date('paid_at')->nullable();
+            $table->dateTime('paid_at')->nullable();
             $table->timestamps();
             $table->foreign('appointment_id')->references('id')->on('appointments');
         });

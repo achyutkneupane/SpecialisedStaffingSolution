@@ -26,7 +26,7 @@ class ViewJob extends Component
             'employee' => 'required'
         ]);
         $this->job->worker_id = $this->employee;
-        $this->job->status = 'active';
+        $this->job->status = 'inactive';
         $this->job->save();
         $this->showInput = false;
     }

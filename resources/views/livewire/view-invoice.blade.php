@@ -1,8 +1,15 @@
 <div class="flex items-center justify-center h-screen">
     <div class="loading" wire:loading wire:target="changePassword"></div>
     <div class="flex flex-col w-7/12 p-5 bg-white shadow rounded-xl">
-        <div class="w-full m-3 text-3xl text-blue-800">
-            View Invoice
+        <div class="flex justify-between w-full">
+            <div class="m-3 text-3xl text-blue-800">
+                View Invoice
+            </div>
+            @if($job->invoice->paid_at == NULL && $job->user == auth()->user())
+            <div class="w-1/12 py-4 mx-1 text-center text-white bg-red-800 cursor-pointer rounded-xl" wire:click='payInvoice'>
+                Pay
+            </div>
+            @endif
         </div>
         <div class="flex flex-col text-xl">
             <div class="flex w-full gap-3">

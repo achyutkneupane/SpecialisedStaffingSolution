@@ -18,7 +18,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('title');
             $table->text('job_description');
             $table->dateTime('job_startDateTime');
-            // $table->dateTime('job_endDateTime');
+            $table->string('location');
             $table->enum('status',array('closed','completed','active','proposed','inactive'))->default('proposed');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('priority',array('0','1','2'))->default('0');

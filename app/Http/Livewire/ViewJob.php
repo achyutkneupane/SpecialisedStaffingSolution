@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\AssignedToJob;
 use App\Models\Appointment;
 use App\Models\Milestone;
 use App\Models\User;
@@ -28,7 +29,10 @@ class ViewJob extends Component
         $this->job->worker_id = $this->employee;
         $this->job->status = 'inactive';
         $this->job->save();
+        $job = $this->job;
+        event(new AssignedToJob($job));
         $this->showInput = false;
+        $this->emit('clearNotf');
     }
     public function cancelBooking()
     {

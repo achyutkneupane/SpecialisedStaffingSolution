@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\AssignedToJob;
+use App\Listeners\SendAssignedToJobNotification;
 use App\Listeners\SendNewUserNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -19,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
             SendNewUserNotification::class,
+        ],
+        AssignedToJob::class => [
+            SendAssignedToJobNotification::class
         ],
     ];
 

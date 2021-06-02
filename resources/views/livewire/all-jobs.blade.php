@@ -1,4 +1,4 @@
-<div class="w-full h-screen">
+<div class="w-full h-full pb-4">
     @if($jobs->count() > 0)
     <div class="flex flex-wrap justify-center w-full rounded-lg">
         @foreach($jobs as $job)

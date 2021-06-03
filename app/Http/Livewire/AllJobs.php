@@ -9,9 +9,35 @@ use Livewire\WithPagination;
 class AllJobs extends Component
 {
     use WithPagination;
+    public $priority,$jobsCount;
+    public function mount()
+    {
+        $this->priority = 'all';
+    }
+    public function loadJobs($priority)
+    {
+        $this->resetPage();
+        $this->priority = $priority;
+    }
     public function render()
     {
-        $jobs = Appointment::with('user','worker')->associated()->orderBy('priority','DESC')->orderBy('job_startDateTime','ASC')->paginate(4);
-        return view('livewire.all-jobs', compact('jobs'));
+        if($this->priority == 'all')
+        {
+            $j = Appointment::with('user','worker')->associated()->orderBy('priority','DESC')->orderBy('job_startDateTime','ASC');
+            $this->jobsCount = $j->count();
+        }
+        else
+        {
+            if($this->priority == 'high')
+                $priorityNum = '2';
+            elseif($this->priority == 'medium')
+                $priorityNum = '1';
+            elseif($this->priority == 'low')
+                $priorityNum = '0';
+            $j = Appointment::with('user','worker')->associated()->where('priority',$priorityNum)->orderBy('priority','DESC')->orderBy('job_startDateTime','ASC');
+            $this->jobsCount = $j->count();
+        }
+        $jobs = $j->paginate(3);
+        return view('livewire.all-jobs',compact('jobs'));
     }
 }

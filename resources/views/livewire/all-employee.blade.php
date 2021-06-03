@@ -1,21 +1,22 @@
-<div class="flex flex-col h-screen items-center justify-center">
-    <div class="text-center w-9/12">
+<div class="flex flex-col items-center justify-center h-screen">
+    <div class="loading" wire:loading></div>
+    <div class="w-9/12 text-center">
         <div class="flex items-center">
-            <div class='overflow-x-auto w-full'>
-                <h1 class="text-4xl font-bolder pb-4">All Employees</h1>
-                <table class='mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden mb-3'>
+            <div class='w-full overflow-x-auto'>
+                <h1 class="pb-4 text-4xl font-bolder">All Employees</h1>
+                <table class='w-full max-w-4xl mx-auto mb-3 overflow-hidden bg-white divide-y divide-gray-300 rounded-lg whitespace-nowrap'>
                     <thead class="bg-gray-50">
-                        <tr class="text-gray-600 text-left">
-                            <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                        <tr class="text-left text-gray-600">
+                            <th class="px-6 py-4 text-sm font-semibold text-center uppercase">
                                 Name
                             </th>
-                            <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                            <th class="px-6 py-4 text-sm font-semibold text-center uppercase">
                                 Email
                             </th>
-                            <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                            <th class="px-6 py-4 text-sm font-semibold text-center uppercase">
                                 Jobs Assigned
                             </th>
-                            <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                            <th class="px-6 py-4 text-sm font-semibold text-center uppercase">
                                 Status
                             </th>
                         </tr>
@@ -40,15 +41,15 @@
                             </td>
                             <td class="px-6 py-4 text-center">
                                 @if($employee->blocked)
-                                <p class="p-1 rounded-xl bg-yellow-600 text-white">
+                                <p class="p-1 text-white bg-yellow-600 rounded-xl">
                                     Blocked
                                 </p>
                                 @elseif($employee->works->where('status','active')->count() == 0)
-                                <p class="p-1 rounded-xl bg-green-800 text-white">
+                                <p class="p-1 text-white bg-green-800 rounded-xl">
                                     Available
                                 </p>
                                 @else
-                                <p class="p-1 rounded-xl bg-red-800 text-white">
+                                <p class="p-1 text-white bg-red-800 rounded-xl">
                                     Not Available
                                 </p>
                                 @endif

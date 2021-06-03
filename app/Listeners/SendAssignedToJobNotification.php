@@ -36,7 +36,8 @@ class SendAssignedToJobNotification
     {
         Notification::send($event->job->worker, new AssignedToJobNotification($event->job));
         Notification::send($event->job->user, new AssignedToJobNotificationForCustomer($event->job));
-        Notification::send($event->job->user, new JobApprovedNotification($event->job));
+        if(empty($event->prev))
+            Notification::send($event->job->user, new JobApprovedNotification($event->job));
         Mail::to($event->job->worker->email)
             ->send(new AssignedJobNotification($event->job));
     }

@@ -26,13 +26,13 @@ class ViewJob extends Component
         $this->validate([
             'employee' => 'required'
         ]);
-        $this->job->worker_id = $this->employee;
+        $prev = $this->job->worker;
+        $this->job->worker()->associate(User::find($this->employee));
         $this->job->status = 'inactive';
         $this->job->save();
-        $job = $this->job;
-        event(new AssignedToJob($job));
         $this->showInput = false;
         $this->emit('clearNotf');
+        event(new AssignedToJob($job = $this->job,$prev));
     }
     public function cancelBooking()
     {

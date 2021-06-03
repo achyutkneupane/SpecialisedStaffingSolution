@@ -1,5 +1,12 @@
-<div class="w-full h-full pb-4">
-    @if($jobs->count() > 0)
+<div class="w-full h-screen pb-4">
+    <div class="loading" wire:loading></div>
+    <div class="flex justify-center w-full py-1 text-xl">
+        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('all')">All</div>
+        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('high')">High Priority</div>
+        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('medium')">Medium Priority</div>
+        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('low')">Low Priority</div>
+    </div>
+    @if($jobsCount > 0)
     <div class="flex flex-wrap justify-center w-full rounded-lg">
         @foreach($jobs as $job)
         <a class="w-3/4 p-5 mt-2 mb-3 bg-white border-4

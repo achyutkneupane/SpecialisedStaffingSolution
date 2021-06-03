@@ -19,9 +19,10 @@ class AssignedToJob
      *
      * @return void
      */
-    public function __construct($job)
+    public function __construct($job,$prev)
     {
         $this->job = $job;
+        $this->prev = $prev;
     }
 
     /**

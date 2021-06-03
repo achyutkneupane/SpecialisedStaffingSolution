@@ -1,4 +1,5 @@
 <div class="flex flex-col items-center h-screen mt-4">
+    <div class="loading" wire:loading></div>
     <h1 class="pb-4 text-4xl font-bolder">All Notifications</h1>
     @if($notifications->count() > 0)
         @foreach($notifications as $notification)

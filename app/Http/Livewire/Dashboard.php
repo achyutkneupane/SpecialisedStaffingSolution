@@ -7,7 +7,11 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public function getJobs($priority)
+    public function getJobsCount($priority)
+    {
+        return Appointment::associated()->where('priority',$priority)->count();
+    }
+    public function getFourJobs($priority)
     {
         return Appointment::associated()->where('priority',$priority)->orderBy('priority','ASC')->orderBy('job_startDateTime','ASC')->take(4)->get(['id','title']);
     }

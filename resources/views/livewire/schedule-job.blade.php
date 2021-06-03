@@ -1,4 +1,5 @@
 <div class="flex flex-col items-center justify-center h-screen">
+    <div class="loading" wire:loading></div>
     <div class="w-6/12 p-5 mt-10 text-center bg-white rounded-lg shadow">
         <div class="w-full m-3 text-3xl text-center text-blue-800">
             Book A Job
@@ -84,7 +85,7 @@
                         <option value="" disabled>Select an Option</option>
                         <option value="2">High</option>
                         <option value="1">Medium</option>
-                        <option value="0">low</option>
+                        <option value="0">Low</option>
                     </select>
                 </div>
                 @error('jobPriority')

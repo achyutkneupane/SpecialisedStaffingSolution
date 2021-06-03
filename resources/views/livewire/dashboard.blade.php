@@ -1,11 +1,12 @@
 <div class="flex flex-col items-center justify-center h-screen gap-4">
     <div class="flex justify-between w-11/12 gap-3">
         <div class="flex flex-col w-1/3">
-            <div class="p-2 text-xl text-center text-white uppercase bg-red-700 border-b-2 border-black">
-                HIGH Priority
+            <div class="flex justify-between p-2 text-xl text-center text-white bg-red-700 border-b-2 border-black">
+                <div class="uppercase">HIGH Priority</div>
+                <div class="font-bold">{{ $this->getJobsCount('2') }} Jobs</div>
             </div>
-            @if($this->getJobs('2')->count() > 0)
-            @foreach($this->getJobs('2') as $job)
+            @if($this->getJobsCount('2') > 0)
+            @foreach($this->getFourJobs('2') as $job)
             <a class="p-2 text-black bg-red-200 border-b border-gray-600" href="{{ route('viewJob',$job->id) }}">
                 {{ $job->title }}
             </a>
@@ -17,11 +18,12 @@
             @endif
         </div>
         <div class="flex flex-col w-1/3">
-            <div class="p-2 text-xl text-center text-white uppercase bg-yellow-500 border-b-2 border-black">
-                Medium Priority
+            <div class="flex justify-between p-2 text-xl text-center text-white bg-yellow-500 border-b-2 border-black">
+                <div class="uppercase">Medium Priority</div>
+                <div class="font-bold">{{ $this->getJobsCount('1') }} Jobs</div>
             </div>
-            @if($this->getJobs('1')->count() > 0)
-            @foreach($this->getJobs('1') as $job)
+            @if($this->getJobsCount('1') > 0)
+            @foreach($this->getFourJobs('1') as $job)
             <a class="p-2 text-black bg-yellow-200 border-b border-gray-600" href="{{ route('viewJob',$job->id) }}">
                 {{ $job->title }}
             </a>
@@ -33,11 +35,12 @@
             @endif
         </div>
         <div class="flex flex-col w-1/3">
-            <div class="p-2 text-xl text-center text-white uppercase bg-green-700 border-b-2 border-black">
-                Low Priority
+            <div class="flex justify-between p-2 text-xl text-center text-white bg-green-700 border-b-2 border-black">
+                <div class="uppercase">Low Priority</div>
+                <div class="font-bold">{{ $this->getJobsCount('0') }} Jobs</div>
             </div>
-            @if($this->getJobs('0')->count() > 0)
-            @foreach($this->getJobs('0') as $job)
+            @if($this->getJobsCount('0') > 0)
+            @foreach($this->getFourJobs('0') as $job)
             <a class="p-2 text-black bg-green-200 border-b border-gray-600" href="{{ route('viewJob',$job->id) }}">
                 {{ $job->title }}
             </a>

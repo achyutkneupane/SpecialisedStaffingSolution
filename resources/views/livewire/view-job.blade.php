@@ -1,4 +1,5 @@
 <div class="w-full h-screen">
+    <div class="loading" wire:loading></div>
     <div class="flex flex-wrap justify-center w-full p-5 rounded-lg">
         <div class="w-9/12 p-5 bg-white rounded-lg shadow">
             <div class="flex flex-col justify-around w-full">

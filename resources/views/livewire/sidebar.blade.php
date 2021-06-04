@@ -14,7 +14,7 @@
             @endphp
         </div>
         <div class="px-5 py-1 mx-4 text-xl text-center bg-blue-100 border border-black rounded-xl">
-          {{ auth()->user()->name }}
+          {{ auth()->user()->name }}<br>({{ ucwords(auth()->user()->role) }})
         </div>
         <div class="flex flex-col mt-3">
             <a class="nav-link{{ request()->routeIs('home') ? "-active" : '' }}" href="{{ route('home') }}">

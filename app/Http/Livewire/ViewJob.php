@@ -12,6 +12,7 @@ use Livewire\Component;
 class ViewJob extends Component
 {
     public $job,$showInput,$employee,$jobId,$workers,$review,$rating,$note,$remark,$startJobDate,$endJobDate,$milestoneText,$statusChangerFlag,$jobStatus;
+    public $cancelJob,$cancelBooking,$managerCancel;
     public function mount($id)
     {
         $this->jobId = $id;
@@ -20,6 +21,9 @@ class ViewJob extends Component
         $this->showInput = false;
         $this->statusChangerFlag = false;
         $this->jobStatus = '';
+        $this->cancelJob = false;
+        $this->cancelBooking = false;
+        $this->managerCancel = false;
     }
     public function assign()
     {
@@ -37,6 +41,7 @@ class ViewJob extends Component
     public function cancelBooking()
     {
         $this->job->update(['status'=>'closed']);
+        $this->cancelBooking = false;
     }
     public function addReview()
     {
@@ -49,15 +54,29 @@ class ViewJob extends Component
             'rating' => $this->rating,
             ]);
     }
+    public function cancelJobConfirm()
+    {
+        $this->cancelJob = true;
+    }
+    public function cancelBookingConfirm()
+    {
+        $this->cancelBooking = true;
+    }
+    public function managerCancelConfirm()
+    {
+        $this->managerCancel = true;
+    }
     public function cancelJob()
     {
         $this->job->update(['worker_id'=>NULL]);
+        $this->cancelJob = false;
         redirect()->route('allJobs');
     }
     public function managerCancel()
     {
         $this->job->update(['worker_id'=>NULL]);
         $this->job->update(['status'=>'closed']);
+        $this->managerCancel = false;
     }
     public function changeStatus()
     {

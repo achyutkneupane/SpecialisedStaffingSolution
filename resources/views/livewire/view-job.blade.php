@@ -1,5 +1,42 @@
 <div class="w-full h-screen">
-    <div class="loading" wire:loading></div>
+    <div class="loading" wire:loading wire:target='assign'></div>
+    @if($this->cancelJob || $this->cancelBooking || $this->managerCancel)
+    <div class="flex justify-center w-full">
+        <div class="flex flex-col w-1/4 px-4 py-2 mt-3 text-center text-blue-700 bg-white border border-blue-700 rounded-lg">
+            <div class="text-xl">
+                Are you sure you want to cancel?
+            </div>
+            <div class="flex justify-center gap-4 mt-2">
+                @if($this->cancelJob)
+                <button class="px-8 py-2 text-white bg-blue-800 rounded-lg" wire:click="$toggle('cancelJob')">
+                    No
+                </button>
+                @elseif($this->managerCancel)
+                <button class="px-8 py-2 text-white bg-blue-800 rounded-lg" wire:click="$toggle('managerCancel')">
+                    No
+                </button>
+                @else
+                <button class="px-8 py-2 text-white bg-blue-800 rounded-lg" wire:click="$toggle('cancelBooking')">
+                    No
+                </button>
+                @endif
+                @if($this->cancelJob)
+                <button class="px-8 py-2 text-white bg-red-800 rounded-lg" wire:click="cancelJob">
+                    Yes
+                </button>
+                @elseif($this->managerCancel)
+                <button class="px-8 py-2 text-white bg-red-800 rounded-lg" wire:click="managerCancel">
+                    Yes
+                </button>
+                @else
+                <button class="px-8 py-2 text-white bg-red-800 rounded-lg" wire:click="cancelBooking">
+                    Yes
+                </button>
+                @endif
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="flex flex-wrap justify-center w-full p-5 rounded-lg">
         <div class="w-9/12 p-5 bg-white rounded-lg shadow">
             <div class="flex flex-col justify-around w-full">
@@ -7,10 +44,10 @@
                     <div class="w-11/12 pb-4 text-4xl font-bolder">View Job</div>
                     @if($job->status != 'closed')
                     @if($job->user == auth()->user() && ($job->status != 'closed' && $job->status != 'completed'))
-                    <div class="w-1/12 py-4 mx-1 text-center text-white bg-red-800 cursor-pointer rounded-xl" wire:click='cancelBooking'>Cancel</div>
+                    <div class="w-1/12 py-4 mx-1 text-center text-white bg-red-800 cursor-pointer rounded-xl" wire:click='cancelBookingConfirm'>Cancel</div>
                     @endif
                     @if($job->worker == auth()->user() && $job->status != 'completed')
-                    <div class="w-1/12 py-4 mx-1 text-center text-white bg-red-800 cursor-pointer rounded-xl" wire:click='cancelJob'>Cancel</div>
+                    <div class="w-1/12 py-4 mx-1 text-center text-white bg-red-800 cursor-pointer rounded-xl" wire:click='cancelJobConfirm'>Cancel</div>
                     @endif
                     @isManager
                     @if(empty($job->worker))
@@ -61,7 +98,7 @@
                     <div class="w-9/12 text-xl">{{ $job->title }}
                         @isManager
                         @if($job->status != 'closed')
-                        <a class="font-bold text-red-700 cursor-pointer" wire:click="managerCancel">(Cancel)</a>
+                        <a class="font-bold text-red-700 cursor-pointer" wire:click="managerCancelConfirm">(Cancel)</a>
                         @endif
                         @endisManager
                     </div>

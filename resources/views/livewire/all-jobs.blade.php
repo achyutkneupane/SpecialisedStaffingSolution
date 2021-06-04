@@ -1,10 +1,10 @@
 <div class="w-full h-screen pb-4">
     <div class="loading" wire:loading></div>
     <div class="flex justify-center w-full py-1 text-xl">
-        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('all')">All</div>
-        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('high')">High Priority</div>
-        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('medium')">Medium Priority</div>
-        <div class="px-8 py-3 text-blue-800 bg-white border cursor-pointer" wire:click="loadJobs('low')">Low Priority</div>
+        <div class="px-8 py-3 text-black bg-white border cursor-pointer" wire:click="loadJobs('all')">All (<b>{{ $jobs->total() }}</b>)</div>
+        <div class="px-8 py-3 text-black bg-red-300 border cursor-pointer" wire:click="loadJobs('high')">High Priority (<b>{{ $this->getCount('high') }}</b>)</div>
+        <div class="px-8 py-3 text-black bg-yellow-300 border cursor-pointer" wire:click="loadJobs('medium')">Medium Priority (<b>{{ $this->getCount('medium') }}</b>)</div>
+        <div class="px-8 py-3 text-black bg-green-300 border cursor-pointer" wire:click="loadJobs('low')">Low Priority (<b>{{ $this->getCount('low') }}</b>)</div>
     </div>
     @if($jobsCount > 0)
     <div class="flex flex-wrap justify-center w-full rounded-lg">

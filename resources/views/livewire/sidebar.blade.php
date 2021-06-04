@@ -13,6 +13,9 @@
                 echo(strtoupper($initials));
             @endphp
         </div>
+        <div class="px-5 py-1 mx-4 text-xl text-center bg-blue-100 border border-black rounded-xl">
+          {{ auth()->user()->name }}
+        </div>
         <div class="flex flex-col mt-3">
             <a class="nav-link{{ request()->routeIs('home') ? "-active" : '' }}" href="{{ route('home') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

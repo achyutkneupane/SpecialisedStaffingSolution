@@ -19,6 +19,24 @@ class AllJobs extends Component
         $this->resetPage();
         $this->priority = $priority;
     }
+    public function getCount($priority)
+    {
+        if($priority == 'all')
+        {
+            $j = Appointment::with('user','worker')->associated()->orderBy('priority','DESC')->orderBy('job_startDateTime','ASC');
+        }
+        else
+        {
+            if($priority == 'high')
+                $priorityNum = '2';
+            elseif($priority == 'medium')
+                $priorityNum = '1';
+            elseif($priority == 'low')
+                $priorityNum = '0';
+            $j = Appointment::with('user','worker')->associated()->where('priority',$priorityNum)->orderBy('priority','DESC')->orderBy('job_startDateTime','ASC');
+        }
+        return $j->count();
+    }
     public function render()
     {
         if($this->priority == 'all')

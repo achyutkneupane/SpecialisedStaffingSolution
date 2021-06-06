@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ScheduleJob extends Component
 {
-    public $jobDate,$jobTitle,$hours,$minutes,$ampm,$jobDescription,$jobBudget,$jobPriority,$jobLocation;
+    public $jobDate,$jobTitle,$hours,$minutes,$ampm,$jobDescription,$jobBudget,$jobPriority,$jobLocation,$contactNumber;
     public $rules = [
         'jobTitle' => 'required',
         'jobDate' => 'required',
@@ -21,6 +21,7 @@ class ScheduleJob extends Component
         'jobPriority' => 'required',
         'jobDescription' => 'required',
         'jobLocation' => 'required',
+        'contactNumber' => 'required'
     ];
     public function mount()
     {
@@ -44,12 +45,13 @@ class ScheduleJob extends Component
             'job_description' => $this->jobDescription,
             'priority' => $this->jobPriority,
             'location' => $this->jobLocation,
+            'contact' => $this->contactNumber
         ]);
         $job->invoice()->create([
             'amount' => $this->jobBudget,
         ]);
         session()->flash('JobSaved', 'Job has been appointed successfully.');
-        $this->reset('jobTitle','jobDate','hours','minutes','ampm','jobDescription','jobLocation');
+        $this->reset('jobTitle','jobDate','hours','minutes','ampm','jobDescription','jobLocation','jobBudget','jobPriority','contactNumber');
         $this->mount();
     }
     public function render()

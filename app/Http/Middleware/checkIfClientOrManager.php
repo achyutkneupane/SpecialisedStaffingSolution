@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class checkIfCustomerOrManager
+class checkIfClientOrManager
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class checkIfCustomerOrManager
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role !== 'customer' && $request->user()->role !== 'manager') {
+        if ($request->user()->role !== 'client' && $request->user()->role !== 'manager') {
             return redirect()->route('home');
         }
         return $next($request);

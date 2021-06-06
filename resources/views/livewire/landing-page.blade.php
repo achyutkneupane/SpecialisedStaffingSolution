@@ -1,5 +1,5 @@
-<div class="w-screen h-screen bg-gray-300">
-    <div class="flex items-center justify-between w-full h-16 px-8 text-3xl text-white uppercase bg-gray-700 border">
+<div class="w-screen h-screen bg-blue-100">
+    <div class="flex items-center justify-between w-full h-16 px-8 text-3xl text-white uppercase bg-blue-800 border">
         <div>
             @php
                 $words = explode(" ", config('app.name', 'Laravel') );
@@ -24,21 +24,28 @@
             <img src="{{ asset('statics/logo.png') }}" alt="Logo" class="w-2/3">
         </div>
         <div class="flex flex-col justify-center w-2/3 gap-4">
-            <div class="px-16 text-4xl uppercase">
+            <div class="px-16 text-4xl text-blue-800 uppercase">
                 {{ config('app.name', 'Laravel') }}
             </div>
             <div class="px-16 text-xl text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel aliquam lectus. Fusce tincidunt consequat justo, quis luctus ante tempus at. Morbi lobortis sagittis purus, quis semper mauris eleifend quis. Mauris ullamcorper leo nisl, volutpat varius enim sagittis ac. Vestibulum facilisis congue ligula, at sollicitudin urna venenatis quis. Donec in vehicula magna. Fusce cursus mi id nibh molestie, at pharetra sem pretium. Proin feugiat magna enim. Curabitur metus risus, mattis quis odio sed, porta rhoncus ante. Nulla suscipit congue sapien in aliquam. Nullam aliquam nisi sed aliquet tempus. Donec id viverra lorem. Etiam molestie diam nec mollis tristique. Cras iaculis, nunc quis tincidunt vulputate, ante arcu lacinia ligula, eu viverra diam diam in lorem. Praesent ornare sodales feugiat. Ut sagittis sagittis varius.
+                At Specialised Solutions Group, we help businesses thrive. We provide the experienced staff you need, when you need them. We also offer a full range of cleaning services for hospitality venues, events, offices, shopping centres and strata buildings. And we connect you with quality suppliers of foodstuffs, beverages, tableware and kitchen items for your hospitality business.
             </div>
         </div>
     </div>
-    <div class="flex flex-row-reverse w-full py-10 mt-4 text-white bg-gray-500">
-        <div class="flex items-center justify-center w-1/2 p-16">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.6365104487363!2d-122.08627838438142!3d37.422065579825144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba02425dad8f%3A0x6c296c66619367e0!2sGoogleplex!5e0!3m2!1sen!2snp!4v1622735901604!5m2!1sen!2snp" class="w-full h-64" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="flex flex-row-reverse w-full py-2 mt-4 text-white bg-white">
+        <div class="flex items-center justify-center w-1/2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d106002.83625376855!2d151.205811!3d-33.874491!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfca0bcd01cf2ef3e!2sSpecialised%20Staffing%20Solutions!5e0!3m2!1sen!2sin!4v1622997287434!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         <div class="flex flex-col justify-center w-1/2 gap-4">
-            <div class="px-16 text-xl text-justify">
-                Quisque at enim in mauris posuere ornare. Nullam pretium, est et sagittis malesuada, diam libero molestie metus, sit amet feugiat justo mi in nisl. Phasellus ante sem, facilisis a justo id, tincidunt tempus leo. Proin risus augue, fringilla sit amet placerat id, vulputate id sem. Maecenas vitae venenatis tortor, non varius felis. Nullam a aliquet lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed justo urna. Pellentesque rhoncus sagittis quam, sed ullamcorper diam malesuada vel. Fusce sit amet nulla id ex hendrerit tristique ac id felis. Vestibulum dui leo, imperdiet sit amet magna sed, vulputate convallis elit. Donec leo massa, volutpat non elit a, vestibulum euismod tortor. Sed est ipsum, vehicula nec nunc eget, eleifend ultrices tortor. Maecenas sed condimentum urna. Morbi eu sollicitudin libero. Nullam scelerisque vulputate neque vitae convallis.
+            <div class="flex flex-row gap-8 px-8 text-xl text-justify">
+                <div class="w-full p-4 bg-blue-500 rounded-xl">
+                    <div class="mb-2 text-4xl text-center">Our company</div>
+                    <div>Specialised Solutions Group is established in 2010—is a dynamic Sydney-based company that provides tailored staffing solutions and other quality services to clients in the hospitality industry.</div>
+                </div>
+                <div class="w-full p-4 bg-blue-700 rounded-xl">
+                    <div class="mb-2 text-4xl text-center">Our vision</div>
+                    <div>Our vision is to make Specialised  Solutions Group a leading provider of integrated personnel, cleaning and supply solutions to hospitality, event and other businesses.</div>
+                </div>
             </div>
         </div>
     </div>

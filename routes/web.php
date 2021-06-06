@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Livewire\AllCustomer;
+use App\Http\Livewire\AllClient;
 use App\Http\Livewire\AllEmployee;
 use App\Http\Livewire\AllInvoices;
 use App\Http\Livewire\AllJobs;
@@ -13,7 +13,7 @@ use App\Http\Livewire\Register;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\ScheduleJob;
 use App\Http\Livewire\Setting;
-use App\Http\Livewire\ViewCustomer;
+use App\Http\Livewire\ViewClient;
 use App\Http\Livewire\ViewEmployee;
 use App\Http\Livewire\ViewInvoice;
 use App\Http\Livewire\ViewJob;
@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',LandingPage::class)->name('landingPage')->middleware('guest');
 Route::get('/home', Dashboard::class)->name('home')->middleware('auth');
 Route::get('/all/employee', AllEmployee::class)->name('allEmployee')->middleware('auth','checkIfManager');
-Route::get('/all/customer', AllCustomer::class)->name('allCustomer')->middleware('auth','checkIfManager');
+Route::get('/all/client', AllClient::class)->name('allClient')->middleware('auth','checkIfManager');
 Route::get('/login', Login::class)->name('login')->middleware('guest');
 Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', [Controller::class,'logout'])->name('logout')->middleware('auth');
@@ -46,4 +46,4 @@ Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middlewar
 Route::get('/job/{id}', ViewJob::class)->name('viewJob')->middleware('auth');
 Route::get('/job/{id}/invoice', ViewInvoice::class)->name('viewInvoice')->middleware('auth');
 Route::get('/employee/{id}', ViewEmployee::class)->name('viewEmployee')->middleware('auth','checkIfManager');
-Route::get('/customer/{id}', ViewCustomer::class)->name('viewCustomer')->middleware('auth','checkIfManager');
+Route::get('/client/{id}', ViewClient::class)->name('viewClient')->middleware('auth','checkIfManager');

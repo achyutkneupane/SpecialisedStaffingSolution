@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AssignedToJobNotificationForCustomer extends Notification
+class AssignedToJobNotificationForClient extends Notification
 {
     use Queueable;
 

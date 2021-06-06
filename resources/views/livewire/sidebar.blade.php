@@ -34,16 +34,16 @@
                     Employees
                 </span>
             </a>
-            <a class="nav-link{{ request()->routeIs('allCustomer') ? "-active" : '' }}" href="{{ route('allCustomer') }}">
+            <a class="nav-link{{ request()->routeIs('allClient') ? "-active" : '' }}" href="{{ route('allClient') }}">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
                 <span class="hidden lg:block">
-                    Customers
+                    Clients
                 </span>
             </a>
             @endisManager
-            @isCustomerOrManager
+            @isClientOrManager
             <a class="nav-link{{ request()->routeIs('scheduleJob') ? "-active" : '' }}" href="{{ route('scheduleJob') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -52,7 +52,7 @@
                     Book A Job
                   </span>
             </a>
-            @endisCustomerOrManager
+            @endisClientOrManager
             <a class="nav-link{{ request()->routeIs('allJobs') ? "-active" : '' }}" href="{{ route('allJobs') }}">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />

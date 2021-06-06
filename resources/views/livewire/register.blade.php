@@ -39,8 +39,8 @@
                         <label class="block text-sm font-medium leading-relaxed tracking-tighter text-gray-700">
                             Role:
                         </label>
-                        <input type="radio" class="form-radio h-5 w-5 text-gray-600" wire:model="role" name="role" value="employee"><span class="ml-2 text-gray-700">Employee</span>
-                        <input type="radio" class="form-radio h-5 w-5 text-gray-600" wire:model="role" name="role" value="customer"><span class="ml-2 text-gray-700">Customer</span>
+                        <input type="radio" class="w-5 h-5 text-gray-600 form-radio" wire:model="role" name="role" value="employee"><span class="ml-2 text-gray-700">Employee</span>
+                        <input type="radio" class="w-5 h-5 text-gray-600 form-radio" wire:model="role" name="role" value="client"><span class="ml-2 text-gray-700">Client</span>
                         <br>
                         @error('role')
                             <span class="text-red-700">{{ $message }}</span>

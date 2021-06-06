@@ -112,6 +112,7 @@ class ViewJob extends Component
             'endDate' => Carbon::parse($this->endJobDate),
             'text' => $this->milestoneText
         ]);
+        $this->reset(['startJobDate','endJobDate','milestoneText']);
     }
     public function completeMilestone($id)
     {

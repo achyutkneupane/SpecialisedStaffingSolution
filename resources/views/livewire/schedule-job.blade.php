@@ -1,5 +1,5 @@
-<div class="flex flex-col items-center justify-center h-screen">
-    <div class="loading" wire:loading></div>
+<div class="flex flex-col items-center justify-center h-full pb-8">
+    <div class="loading" wire:loading wire:target='store'></div>
     <div class="w-6/12 p-5 mt-10 text-center bg-white rounded-lg shadow">
         <div class="w-full m-3 text-3xl text-center text-blue-800">
             Book A Job
@@ -11,13 +11,15 @@
             </div>
             @endif
             <div class="flex flex-col">
-                <div class="mt-4">
+                <div class="mt-4 text-left">
+                    <label>Job Title</label>
                     <input wire:model.lazy="jobTitle" placeholder="Enter Job Title" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                 </div>
                 @error('jobTitle')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="flex mt-4">
+                <div class="flex flex-col mt-4 text-left">
+                    <label>Job Date</label>
                     <div class="relative w-full text-blue-600 focus-within:text-gray-400">
                         <input wire:model.lazy="jobDate" placeholder="Click on the Calender to enter start date" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" readonly>
                         <span class="absolute inset-y-0 flex items-center pl-2 right-4">
@@ -37,7 +39,8 @@
                 @error('jobDate')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="flex mt-4">
+                <div class="flex flex-col mt-4 text-left">
+                    <label>Job Time</label>
                     <div class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                         <div class="flex">
                           <select wire:model="hours" class="mr-3 text-center bg-transparent outline-none appearance-none">
@@ -80,9 +83,10 @@
                 @error('ampm')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="mt-4">
+                <div class="mt-4 text-left">
+                    <label>Job Priority</label>
                     <select wire:model.lazy="jobPriority" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                        <option value="" disabled>Select an Option</option>
+                        <option value="" disabled>Select Job Priority</option>
                         <option value="2">High</option>
                         <option value="1">Medium</option>
                         <option value="0">Low</option>
@@ -91,25 +95,38 @@
                 @error('jobPriority')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="mt-4">
+                <div class="mt-4 text-left">
+                    <label>Contact Number</label>
+                    <input wire:model.lazy="contactNumber" placeholder="Enter Contact Number" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                </div>
+                @error('contactNumber')
+                    <span class="text-left text-red-700">{{ $message }}</span>
+                @enderror
+                <div class="mt-4 text-left">
+                    <label>Job Location</label>
                     <input wire:model.lazy="jobLocation" placeholder="Enter Job Location" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                 </div>
                 @error('jobLocation')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="mt-4">
+                <div class="mt-4 text-left">
+                    <label>Job Budget</label>
                     <input wire:model.lazy="jobBudget" placeholder="Enter Job Budget" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                 </div>
                 @error('jobBudget')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <div class="mt-4">
+                <div class="mt-4 text-left">
+                    <label>Job Description</label>
                     <textarea wire:model.lazy="jobDescription" placeholder="Enter Job Description" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"></textarea>
                 </div>
                 @error('jobDescription')
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
-                <button type="submit" wire:click="store" class="block w-3/12 px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-800 rounded-lg hover:bg-indigo-800 hover:text-blue-100 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Store</button>
+                <div class="flex flex-row justify-end gap-2">
+                    <a href="{{ route('scheduleJob') }}" class="block w-3/12 px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-red-700 rounded-lg hover:bg-red-800 hover:text-blue-100 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Cancel</a>
+                    <button type="submit" wire:click="store" class="block w-3/12 px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-800 rounded-lg hover:bg-indigo-800 hover:text-blue-100 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 ">Save</button>
+                </div>
             </div>
         </div>
     </div>

@@ -39,6 +39,7 @@ class User extends Authenticatable
     ];
     protected $appends = [
         'worker_work_days',
+        'all_work_status'
     ];
     public function jobs()
     {
@@ -55,6 +56,17 @@ class User extends Authenticatable
         {
             foreach($this->works()->get() as $work) {
                 $days->push(Carbon::parse($work->job_startDateTime)->format('Y-m-d'));
+            }
+        }
+        return $days;
+    }
+    public function getALlWorkStatusAttribute()
+    {
+        $days = collect();
+        if($this->works()->count() > 0)
+        {
+            foreach($this->works()->get() as $work) {
+                $days->push($work->status);
             }
         }
         return $days;

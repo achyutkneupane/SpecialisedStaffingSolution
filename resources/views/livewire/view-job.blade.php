@@ -55,7 +55,7 @@
                         <select wire:model="employee" class="p-3 mr-5 border-2 rounded-lg">
                             <option value="" disabled>Select an employee</option>
                             @foreach($workers as $worker)
-                                <option value="{{ $worker->id }}" {{ $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) ? 'disabled' : '' }}>{{ $worker->name }}</option>
+                                <option value="{{ $worker->id }}" {{ $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || ( $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) && !$worker->all_work_status->contains('completed') ) ? 'disabled' : '' }}>{{ $worker->name }}</option>
                             @endforeach
                         </select>
                         @endif
@@ -74,7 +74,7 @@
                         <select wire:model="employee" class="p-3 mr-5 border-2 rounded-lg">
                             <option value="" disabled>Select an employee</option>
                             @foreach($workers as $worker)
-                                <option value="{{ $worker->id }}" {{ $job->worker->id == $worker->id || $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) ? 'disabled' : '' }}>{{ $worker->name }}</option>
+                                <option value="{{ $worker->id }}" {{ $job->worker->id == $worker->id || $worker->blocked == true || $worker->works->where('status','active')->count() != 0 || ( $worker->worker_work_days->contains(Carbon\Carbon::parse($job->job_startDateTime)->format('Y-m-d')) && !$worker->all_work_status->contains('completed') ) ? 'disabled' : ''  }}>{{ $worker->name }}</option>
                             @endforeach
                         </select>
                         @endif

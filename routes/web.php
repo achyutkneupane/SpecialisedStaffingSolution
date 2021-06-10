@@ -6,6 +6,7 @@ use App\Http\Livewire\AllEmployee;
 use App\Http\Livewire\AllInvoices;
 use App\Http\Livewire\AllJobs;
 use App\Http\Livewire\AllNotification;
+use App\Http\Livewire\ContactUs;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\LandingPage;
 use App\Http\Livewire\Login;
@@ -31,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',LandingPage::class)->name('landingPage')->middleware('guest');
+Route::get('/contact-us',ContactUs::class)->name('contactUs')->middleware('guest');
 Route::get('/home', Dashboard::class)->name('home')->middleware('auth');
 Route::get('/all/employee', AllEmployee::class)->name('allEmployee')->middleware('auth','checkIfManager');
 Route::get('/all/client', AllClient::class)->name('allClient')->middleware('auth','checkIfManager');

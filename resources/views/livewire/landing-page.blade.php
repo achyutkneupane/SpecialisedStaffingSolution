@@ -7,7 +7,7 @@
                 foreach ($words as $w) {
                     $initials .= $w[0];
                 }
-                echo(strtoupper($initials));
+                echo("<a href=".route('landingPage').">".strtoupper($initials)."</a>");
             @endphp
         </div>
         <div class="flex gap-4 text-xl">
@@ -16,6 +16,9 @@
             </a>
             <a href="{{ route('register') }}">
                 Register
+            </a>
+            <a href="{{ route('contactUs') }}">
+                Contact Us
             </a>
         </div>
     </div>

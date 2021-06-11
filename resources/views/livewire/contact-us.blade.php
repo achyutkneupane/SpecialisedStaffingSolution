@@ -1,14 +1,7 @@
 <div class="w-screen h-screen bg-blue-100">
     <div class="flex items-center justify-between w-full h-16 px-8 text-3xl text-white uppercase bg-blue-800 border">
-        <div>
-            @php
-                $words = explode(" ", config('app.name', 'Laravel') );
-                $initials = null;
-                foreach ($words as $w) {
-                    $initials .= $w[0];
-                }
-                echo("<a href=".route('landingPage').">".strtoupper($initials)."</a>");
-            @endphp
+        <div class="text-xl">
+            <a href="{{ route('landingPage') }}">{{ config('app.name') }}</a>
         </div>
         <div class="flex gap-4 text-xl">
             <a href="{{ route('login') }}">

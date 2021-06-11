@@ -4,14 +4,6 @@
           <div class="flex justify-center w-full">
             <img src="{{ asset('statics/logo.png') }}" class="w-1/3">
           </div>
-            @php
-                $words = explode(" ", config('app.name', 'Laravel') );
-                $initials = null;
-                foreach ($words as $w) {
-                    $initials .= $w[0];
-                }
-                echo(strtoupper($initials));
-            @endphp
         </div>
         <div class="px-5 py-1 mx-4 text-xl text-center bg-blue-100 border border-black rounded-xl">
           {{ auth()->user()->name }}<br>({{ ucwords(auth()->user()->role) }})

@@ -49,7 +49,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d106002.83625376855!2d151.205811!3d-33.874491!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfca0bcd01cf2ef3e!2sSpecialised%20Staffing%20Solutions!5e0!3m2!1sen!2sin!4v1622997287434!5m2!1sen!2sin" width="600" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="flex flex-col items-start justify-end w-1/2">
-                    <div class="mb-6 text-3xl uppercase">About Us</div>
+                    <div class="mb-6 text-3xl uppercase">Contact Us</div>
                     <div class="text-2xl">Specialised Staffing Solutions Pvt. Ltd</div>
                     <div class="text-xl">Suite 607, Level 6</div>
                     <div class="text-xl">97-99 Bathurst Street</div>

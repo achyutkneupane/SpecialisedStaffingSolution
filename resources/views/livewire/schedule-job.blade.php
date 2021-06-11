@@ -110,13 +110,6 @@
                     <span class="text-left text-red-700">{{ $message }}</span>
                 @enderror
                 <div class="mt-4 text-left">
-                    <label>Job Budget</label>
-                    <input wire:model.lazy="jobBudget" placeholder="Enter Job Budget" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                </div>
-                @error('jobBudget')
-                    <span class="text-left text-red-700">{{ $message }}</span>
-                @enderror
-                <div class="mt-4 text-left">
                     <label>Job Description</label>
                     <textarea wire:model.lazy="jobDescription" placeholder="Enter Job Description" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"></textarea>
                 </div>

@@ -26,13 +26,12 @@
                     <div class="text-xl font-extrabold text-blue-900">Date of Appointment: </div>
                     <div class="text-xl">{{ $job->job_startDateTime }}</div>
                 </div>
-                <div class="flex gap-2">
-                    <div class="text-xl font-extrabold text-blue-900">Amount: </div>
-                    <div class="text-xl">{{ $job->invoice->amount }}</div>
+                <div class="flex gap-2 text-xl">
+                    <div class="font-extrabold text-blue-900">Payment Status: </div>
                     @if($job->invoice->paid_at)
-                    <div class="font-bold text-green-700">(PAID)</div>
+                    <div class="font-bold text-green-700">PAID</div>
                     @else
-                    <div class="font-bold text-red-700">(UNPAID)</div>
+                    <div class="font-bold text-red-700">UNPAID</div>
                     @endif
                 </div>
                 @if(!empty($job->worker))

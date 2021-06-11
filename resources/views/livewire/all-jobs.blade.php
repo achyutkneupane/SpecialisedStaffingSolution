@@ -33,13 +33,6 @@
                     <div class="text-xl font-extrabold text-blue-900">Date of Appointment: </div>
                     <div class="text-xl">{{ $job->job_startDateTime }}</div>
                 </div>
-                <div class="flex gap-2">
-                    <div class="text-xl font-extrabold text-blue-900">Amount: </div>
-                    <div class="text-xl">{{ $job->invoice->amount }}</div>
-                    @if($job->invoice->paid_at)
-                    <div class="font-bold text-green-700">(PAID)</div>
-                    @endif
-                </div>
                 @if(!empty($job->worker))
                 <div class="flex gap-2">
                     <div class="text-xl font-extrabold text-blue-900">Assigned To: </div>

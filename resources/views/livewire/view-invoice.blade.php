@@ -25,10 +25,6 @@
                 <div>{{ $job->user->name }}</div>
             </div>
             <div class="flex w-full gap-3">
-                <div class="font-extrabold text-blue-900">Amount:</div>
-                <div>{{ $job->invoice->amount }}</div>
-            </div>
-            <div class="flex w-full gap-3">
                 <div class="font-extrabold text-blue-900">Payment Status:</div>
                 @if($job->invoice->paid_at)
                 <div class="font-bold text-green-700">PAID at {{ $job->invoice->paid_at }}</div>

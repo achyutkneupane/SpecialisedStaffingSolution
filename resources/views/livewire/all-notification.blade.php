@@ -9,7 +9,7 @@
                     New {{ $notification->data['role'] }} <b>{{ $notification->data['name'] }}</b> has registered.
                     @elseif($notification->type == "App\Notifications\AssignedToJobNotification")
                     You have been assigned to a job "<b>{{ $notification->data['title'] }}</b>".<br><a href="{{ route('viewJob',$notification->data['id']) }}" class="text-blue-400 cursor-pointer">View Job</a>
-                    @elseif($notification->type == "App\Notifications\AssignedToJobNotificationForClient")
+                    @elseif($notification->type == "App\Notifications\AssignedToJobNotificationForCustomer")
                     Your job "<b>{{ $notification->data['title'] }}</b>" have been assigned to "<b>{{ $notification->data['worker_name'] }}</b>".<br><a href="{{ route('viewJob',$notification->data['id']) }}" class="text-blue-400 cursor-pointer">View Job</a>
                     @elseif($notification->type == "App\Notifications\JobApprovedNotification")
                     Your job "<b>{{ $notification->data['title'] }}</b>" have been approved.<br><a href="{{ route('viewJob',$notification->data['id']) }}" class="text-blue-400 cursor-pointer">View Job</a>

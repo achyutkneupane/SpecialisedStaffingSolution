@@ -10,17 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ScheduleJob extends Component
 {
-    public $jobDate,$jobTitle,$hours,$minutes,$ampm,$jobDescription,$jobPriority,$jobLocation,$contactNumber;
+    public $jobDate,$jobTitle,$hours,$minutes,$ampm,$jobDescription,$jobPriority,$jobLocation,$contactNumber,$jobTimeError;
     public $rules = [
         'jobTitle' => 'required',
         'jobDate' => 'required',
-        'hours' => 'required',
-        'minutes' => 'required',
-        'ampm' => 'required',
         'jobPriority' => 'required',
         'jobDescription' => 'required',
         'jobLocation' => 'required',
-        'contactNumber' => 'required'
+        'contactNumber' => 'required|numeric'
     ];
     public function mount()
     {
@@ -35,23 +32,32 @@ class ScheduleJob extends Component
     }
     public function store()
     {
-        $this->validate();
-        $startDateTime = $this->jobDate.' '.$this->hours.':'.$this->minutes.' '.$this->ampm;
-        $job = Appointment::create([
-            'title' => $this->jobTitle,
-            'job_startDateTime' => Carbon::parse($startDateTime),
-            'user_id' => auth()->id(),
-            'job_description' => $this->jobDescription,
-            'priority' => $this->jobPriority,
-            'location' => $this->jobLocation,
-            'contact' => $this->contactNumber
-        ]);
-        $job->invoice()->create([
-            'paid_at' => null,
-        ]);
-        session()->flash('JobSaved', 'Job has been appointed successfully.');
-        $this->reset('jobTitle','jobDate','hours','minutes','ampm','jobDescription','jobLocation','jobPriority','contactNumber');
-        $this->mount();
+        if($this->hours != "" || $this->minutes != "" || $this->ampm != "")
+        {
+            $this->jobTimeError = NULL;
+            $this->validate();
+            $startDateTime = $this->jobDate.' '.$this->hours.':'.$this->minutes.' '.$this->ampm;
+            $job = Appointment::create([
+                'title' => $this->jobTitle,
+                'job_startDateTime' => Carbon::parse($startDateTime),
+                'user_id' => auth()->id(),
+                'job_description' => $this->jobDescription,
+                'priority' => $this->jobPriority,
+                'location' => $this->jobLocation,
+                'contact' => $this->contactNumber
+            ]);
+            $job->invoice()->create([
+                'paid_at' => null,
+            ]);
+            session()->flash('JobSaved', 'Job has been appointed successfully.');
+            $this->reset('jobTitle','jobDate','hours','minutes','ampm','jobDescription','jobLocation','jobPriority','contactNumber');
+            $this->mount();
+        }
+        else
+        {
+            $this->jobTimeError = 'The job time field is required.';
+            $this->validate();
+        }
     }
     public function render()
     {

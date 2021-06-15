@@ -31,10 +31,10 @@ class DatabaseSeeder extends Seeder
         }
         for($i = 1; $i<=15 ; $i++) {
         User::create([
-            'email' => 'client'.$i.'@specialised.com',
-            'password' => Hash::make('Client@123'),
-            'name' => 'SSS Client '.$i,
-            'role' => 'client'
+            'email' => 'customer'.$i.'@specialised.com',
+            'password' => Hash::make('Customer@123'),
+            'name' => 'SSS Customer '.$i,
+            'role' => 'customer'
         ]);
         }
         // \App\Models\User::factory(10)->create();

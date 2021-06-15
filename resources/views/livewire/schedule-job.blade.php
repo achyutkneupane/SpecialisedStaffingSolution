@@ -74,15 +74,9 @@
                         </div>
                     </div>
                 </div>
-                @error('hours')
-                    <span class="text-left text-red-700">{{ $message }}</span>
-                @enderror
-                @error('minutes')
-                    <span class="text-left text-red-700">{{ $message }}</span>
-                @enderror
-                @error('ampm')
-                    <span class="text-left text-red-700">{{ $message }}</span>
-                @enderror
+                @if('jobTimeError')
+                    <span class="text-left text-red-700">{{ $jobTimeError }}</span>
+                @endif
                 <div class="mt-4 text-left">
                     <label>Job Priority</label>
                     <select wire:model.lazy="jobPriority" class="w-full px-4 py-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">

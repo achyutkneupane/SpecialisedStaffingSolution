@@ -242,7 +242,7 @@
                     </div>
                 @endif
                 <div class="flex flex-col mt-5">
-                    <div class="w-full pb-4 text-2xl font-bolder">Notes by Client</div>
+                    <div class="w-full pb-4 text-2xl font-bolder">Notes by Customer</div>
                     @if($job->user == auth()->user() && $job->status != 'completed')
                     <div class="flex flex-row w-full">
                         <div class="w-3/12 mr-5 text-xl font-extrabold text-blue-900">New Note: </div>

@@ -29,5 +29,5 @@ Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', [Controller::class,'logout'])->name('logout')->middleware('auth');
 Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
 Route::get('/setting', Setting::class)->name('setting')->middleware('auth');
-Route::get('/jobs', AllJobs::class)->name('allJobs')->middleware('auth',['checkIfClient','checkIfManager']);
-Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middleware('auth','checkIfClient','checkIfManager');
+Route::get('/jobs', AllJobs::class)->name('allJobs')->middleware('auth',['checkIfCustomer','checkIfManager']);
+Route::get('/jobs/schedule', ScheduleJob::class)->name('scheduleJob')->middleware('auth','checkIfCustomer','checkIfManager');

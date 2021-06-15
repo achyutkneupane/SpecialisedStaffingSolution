@@ -30,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('isManager', function () {
             return auth()->user()->role == "manager";
         });
-        Blade::if('isClient', function () {
-            return auth()->user()->role == "client";
+        Blade::if('isCustomer', function () {
+            return auth()->user()->role == "customer";
         });
-        Blade::if('isClientOrManager', function () {
-            return auth()->user()->role == "client" || auth()->user()->role == "manager";
+        Blade::if('isCustomerOrManager', function () {
+            return auth()->user()->role == "customer" || auth()->user()->role == "manager";
         });
         Blade::if('isEmployeeOrManager', function () {
             return auth()->user()->role == "employee" || auth()->user()->role == "manager";

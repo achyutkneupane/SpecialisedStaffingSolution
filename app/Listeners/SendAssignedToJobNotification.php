@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Mail\AssignedJobNotification;
 use App\Notifications\AssignedToJobNotification;
-use App\Notifications\AssignedToJobNotificationForClient;
+use App\Notifications\AssignedToJobNotificationForCustomer;
 use App\Notifications\JobApprovedNotification;
 use App\Notifications\NotificationOnTheDay;
 use Carbon\Carbon;
@@ -35,7 +35,7 @@ class SendAssignedToJobNotification
     public function handle($event)
     {
         Notification::send($event->job->worker, new AssignedToJobNotification($event->job));
-        Notification::send($event->job->user, new AssignedToJobNotificationForClient($event->job));
+        Notification::send($event->job->user, new AssignedToJobNotificationForCustomer($event->job));
         if(empty($event->prev))
             Notification::send($event->job->user, new JobApprovedNotification($event->job));
         Mail::to($event->job->worker->email)
